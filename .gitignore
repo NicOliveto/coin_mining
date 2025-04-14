@@ -1,0 +1,9 @@
+#files
+.env
+*.pyc
+*.pyo
+
+#folders
+app/data/
+**/__pycache__/
+.idea/
