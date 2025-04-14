@@ -42,7 +42,7 @@ async def app_main(currency, start_date, end_date, concurrency_limit):
 
     data_path = Path(required_envs["STORAGE_PATH"])
     data_path.mkdir(parents=True, exist_ok=True)
-    csv_path = f"{data_path}/{currency}_{current_date()}.csv"
+    csv_path = f"{data_path}/currency_data_{currency}_{current_date()}.csv"
 
     try:
         client = ClientFactory.get_client(api_name=required_envs["API_CLIENT_NAME"])
