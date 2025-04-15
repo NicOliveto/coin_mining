@@ -1,16 +1,32 @@
 services:
+  postgres:
+    build:
+      context: .
+      dockerfile: db/Dockerfile
+    container_name: postgres_challenge
+    restart: always
+    env_file:
+      - db/.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: config/Dockerfile
     container_name: python_challenge
+    depends_on:
+      - postgres
     stdin_open: true
     tty: true
     env_file:
-      - .env
+      - config/.env
     volumes:
       - ./data:/apiapp/data
     working_dir: /apiapp
 
 volumes:
+  pg_data:
   data:

@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc libpq-dev && \
     rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
+COPY ../requirements.txt .
 
 RUN python -m venv /opt/venv && \
     /opt/venv/bin/pip install --no-cache-dir -r requirements.txt
@@ -23,7 +23,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 COPY /app ./app
 
-COPY coin_mining.py .
+COPY ../coin_mining.py .
 
 RUN apt-get update && \
     apt-get install -y cron gcc libpq-dev --no-install-recommends && \

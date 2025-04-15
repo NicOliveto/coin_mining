@@ -4,6 +4,6 @@ __pycache__/
 *.pyd
 .venv/
 .git/
-.idea/
+../.idea/
 .DS_Store
 .gitignore

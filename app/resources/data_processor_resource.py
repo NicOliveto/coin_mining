@@ -47,11 +47,12 @@ class DataProcessorResource:
                 data_list = []
                 for item in data:
                     data_list.append({
-                         "base_currency": str(data[0]["code"])
-                        ,"target_currency": str(data[0]["codein"])
-                        ,"bid": float(item["bid"])
-                        ,"ask": float(item["ask"])
-                        ,"date_time": datetime.fromtimestamp(int(item["timestamp"]), tz=timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
+                         "base_currency_id": str(data[0]["code"])
+                        ,"target_currency_id": str(data[0]["codein"])
+                        , "date_time": datetime.fromtimestamp(int(item["timestamp"]), tz=timezone.utc).strftime(
+                            '%Y-%m-%d %H:%M:%S')
+                        ,"purchase_amt": float(item["bid"])
+                        ,"sale_amt": float(item["ask"])
                     })
                 return data_list
             except aiohttp.ClientError as e:
